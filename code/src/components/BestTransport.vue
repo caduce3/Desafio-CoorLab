@@ -66,7 +66,7 @@ export default {
           peso: '',
           destino: null
         },
-        destino: [{ text: 'Selecione o Destino', value: null }, 'Carrots', 'Beans', 'Tomatoes', 'Corn'],
+        destino: [],
         show: true
     }
   },
@@ -76,7 +76,8 @@ export default {
     axios.get('http://localhost:3000/transport')
       .then(response => {
         console.log(response.data);
-
+        const cidades = response.data.map(item => item.city);
+        this.destino = cidades;
         //this.appName = response.data[0].city;
       })
       .catch(error => {
