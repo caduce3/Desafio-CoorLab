@@ -43,27 +43,29 @@
           <div class='container-cards-resultado-1'>
             <p>
               <strong>Frete com o menor valor</strong> <br>
-              Transportadora: <br>
-              Tempo estimado:
+              Transportadora: <span id='nomeTransportadoraFreteMenorValor'></span><br>
+              Tempo estimado: <span id='tempoEstimadoTransportadoraFreteMenorValor'></span>
             </p>
           </div>
           <div class='container-cards-resultado-2'>
             <p>
               <strong>Preço</strong> <br>
+              <span id='resultadoFreteMenorValor'></span>
             </p>
           </div>
         </div>
         <div class="container-cards-resultado">
           <div class='container-cards-resultado-1'>
             <p>
-              <strong>Frete com o menor valor</strong> <br>
-              Transportadora: <br>
-              Tempo estimado:
+              <strong>Frete mais rápido</strong> <br>
+              Transportadora: <span id='nomeTransportadoraFreteMaisRapido'></span><br>
+              Tempo estimado: <span id='tempoEstimadoTransportadoraFreteMaisRapido'></span>
             </p>
           </div>
           <div class='container-cards-resultado-2'>
             <p>
               <strong>Preço</strong> <br>
+              <span id='resultadoFreteMaisRapido'></span>
             </p>
           </div>
         </div>
