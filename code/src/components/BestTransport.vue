@@ -6,7 +6,6 @@
       </b-navbar-brand>
     </b-navbar>
   </div>
-
 </template>
 
 <script>
