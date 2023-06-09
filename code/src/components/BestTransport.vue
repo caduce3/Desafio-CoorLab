@@ -37,12 +37,42 @@
       <!-- <b-card class="mt-3" header="Form Data Result">
         <pre class="m-0">{{ formulario }}</pre>
       </b-card> -->
+
+      <div class='mt-5'>
+        <div class="container-cards-resultado mb-3 mt-5">
+          <div class='container-cards-resultado-1'>
+            <p>
+              <strong>Frete com o menor valor</strong> <br>
+              Transportadora: <br>
+              Tempo estimado:
+            </p>
+          </div>
+          <div class='container-cards-resultado-2'>
+            <p>
+              <strong>Preço</strong> <br>
+            </p>
+          </div>
+        </div>
+        <div class="container-cards-resultado">
+          <div class='container-cards-resultado-1'>
+            <p>
+              <strong>Frete com o menor valor</strong> <br>
+              Transportadora: <br>
+              Tempo estimado:
+            </p>
+          </div>
+          <div class='container-cards-resultado-2'>
+            <p>
+              <strong>Preço</strong> <br>
+            </p>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-  </div>
-  
-  
-
+    
+  </div> 
 </template>
 
 <script>
@@ -113,6 +143,14 @@ export default {
 
 <style scoped>
 
+.title .navbar {
+  background-color: #00aca6 !important;
+}
+
+.title .navbar-brand {
+  margin-left: 20px;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
   #container-form {
     border: 1px solid black;
@@ -121,6 +159,7 @@ export default {
     font-size: 16px;
     height: 75vh;
     background-color: #00ACA6;
+    display: flex;
   }
   #base-form {
     display: flex;
@@ -129,6 +168,7 @@ export default {
     height: 70vh;
     background-color: white;
     border-radius: 15px;
+    margin-right: 5%;
   }
 
   #base-form label {
@@ -165,11 +205,30 @@ export default {
 
    }
 
-.title .navbar {
-  background-color: #00aca6 !important;
-}
 
-.title .navbar-brand {
-  margin-left: 20px;
-}
+   .container-cards-resultado{
+      display: flex;
+      flex-direction: row; 
+      font-size: 1.3vw;  
+      text-align: left;
+   }
+
+   .container-cards-resultado-1{
+      margin-right: 20px;
+      border-radius: 5px;
+      border: 1px solid black;
+      padding: 20px;
+      width: 30vw;
+      height: 20vh;
+      background-color: white;
+   }
+   .container-cards-resultado-2{
+      margin-right: 20px;
+      border-radius: 5px;
+      border: 1px solid black;
+      padding: 20px;
+      width: 10vw;
+      height: 20vh;
+      background-color: white;
+   }
 </style>
