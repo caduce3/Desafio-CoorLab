@@ -144,9 +144,11 @@ export default {
               const custo =
                 peso <= 100 ? curr.cost_transport_light : curr.cost_transport_heavy;
 
-              if (!prev || custo < prev.cost) {
-                return { ...curr, cost: custo };
-              }
+                const valorFrete = parseFloat(custo.replace('R$', '')) * peso;
+
+                if (!prev || valorFrete < prev.cost) {
+                  return { ...curr, cost: valorFrete };
+                }
 
               return prev;
             }, null);
@@ -156,11 +158,14 @@ export default {
             .reduce((prev, curr) => {
               const tempo = parseInt(curr.lead_time);
 
+              const custo = peso <= 100 ? curr.cost_transport_light : curr.cost_transport_heavy;
+              const valorFrete = parseFloat(custo.replace('R$', '')) * peso;
+
               if (!prev || tempo < prev.time) {
                 return { ...curr, time: tempo };
               }
 
-              return prev;
+              return prev, { ...curr, cost: valorFrete };
             }, null);
 
           
@@ -170,7 +175,10 @@ export default {
           };
 
           console.log('Frete mais barato:', this.melhorFrete.maisBarato);
+          console.log('Valor do frete mais barato:', this.melhorFrete.maisBarato.cost);
+
           console.log('Frete mais rápido:', this.melhorFrete.maisRapido);
+          console.log('Valor do frete mais rápido:', this.melhorFrete.maisRapido.cost);
     })
     .catch((error) => {
       console.error(error);
