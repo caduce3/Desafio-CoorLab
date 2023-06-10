@@ -128,7 +128,54 @@ export default {
     },
     onSubmit(event) {
         event.preventDefault()
-        
+
+        const destino = this.formulario.destino;
+        const peso = this.formulario.peso;
+        console.log(destino, peso);
+
+        axios
+          .get('http://localhost:3000/transport')
+          .then((response) => {
+          const transportadoras = response.data;
+
+          const freteMaisBarato = transportadoras
+            .filter((transportadora) => transportadora.city === destino)
+            .reduce((prev, curr) => {
+              const custo =
+                peso <= 100 ? curr.cost_transport_light : curr.cost_transport_heavy;
+
+              if (!prev || custo < prev.cost) {
+                return { ...curr, cost: custo };
+              }
+
+              return prev;
+            }, null);
+
+          const freteMaisRapido = transportadoras
+            .filter((transportadora) => transportadora.city === destino)
+            .reduce((prev, curr) => {
+              const tempo = parseInt(curr.lead_time);
+
+              if (!prev || tempo < prev.time) {
+                return { ...curr, time: tempo };
+              }
+
+              return prev;
+            }, null);
+
+          
+          this.melhorFrete = {
+            maisBarato: freteMaisBarato,
+            maisRapido: freteMaisRapido,
+          };
+
+          console.log('Frete mais barato:', this.melhorFrete.maisBarato);
+          console.log('Frete mais rápido:', this.melhorFrete.maisRapido);
+    })
+    .catch((error) => {
+      console.error(error);
+       
+          });
       },
       onReset(event) {
         event.preventDefault()
@@ -140,7 +187,7 @@ export default {
         this.$nextTick(() => {
           this.show = true
         })
-      }
+      },
   },
 }
 </script>
