@@ -31,7 +31,7 @@
 
         <div class='m-5'>
           <b-button type="submit" class="mb-2">Analisar</b-button> <br>
-          <b-button type="reset" id="btn-reset">Reset</b-button>
+          <b-button type="reset" id="btn-reset">Limpar</b-button>
         </div>
 
       </b-form>
@@ -109,10 +109,8 @@ export default {
     // para que isso ocorra na inicialização da pagina
     axios.get('http://localhost:3000/transport')
       .then(response => {
-        console.log(response.data);
         const cidades = response.data.map(item => item.city);
         this.destino = cidades;
-        //this.appName = response.data[0].city;
       })
       .catch(error => {
         console.error(error);
@@ -174,8 +172,23 @@ export default {
           };
 
           console.log('Frete mais barato:', this.melhorFrete.maisBarato);
-
           console.log('Frete mais rápido:', this.melhorFrete.maisRapido);
+
+          const nomeTransportadoraFreteMenorValor = document.getElementById('nomeTransportadoraFreteMenorValor');
+          const tempoEstimadoTransportadoraFreteMenorValor = document.getElementById('tempoEstimadoTransportadoraFreteMenorValor');
+          const resultadoFreteMenorValor = document.getElementById('resultadoFreteMenorValor');
+
+          const nomeTransportadoraFreteMaisRapido = document.getElementById('nomeTransportadoraFreteMaisRapido');
+          const tempoEstimadoTransportadoraFreteMaisRapido = document.getElementById('tempoEstimadoTransportadoraFreteMaisRapido');
+          const resultadoFreteMaisRapido = document.getElementById('resultadoFreteMaisRapido');
+
+          nomeTransportadoraFreteMenorValor.innerHTML = this.melhorFrete.maisBarato.name;
+          tempoEstimadoTransportadoraFreteMenorValor.innerHTML = this.melhorFrete.maisBarato.lead_time;
+          resultadoFreteMenorValor.innerHTML = this.melhorFrete.maisBarato.cost.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+          nomeTransportadoraFreteMaisRapido.innerHTML = this.melhorFrete.maisRapido.name;
+          tempoEstimadoTransportadoraFreteMaisRapido.innerHTML = this.melhorFrete.maisRapido.lead_time;
+          resultadoFreteMaisRapido.innerHTML = this.melhorFrete.maisRapido.valorFrete.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   
     })
     .catch((error) => {
