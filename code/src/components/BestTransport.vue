@@ -29,8 +29,10 @@
           ></b-form-input>
         </b-form-group>
 
-        <b-button type="submit" variant="primary" class="m-5">Analisar</b-button>
-        <!-- <b-button type="reset" variant="danger">Reset</b-button> -->
+        <div class='m-5'>
+          <b-button type="submit" class="mb-2">Analisar</b-button> <br>
+          <b-button type="reset" id="btn-reset">Reset</b-button>
+        </div>
 
       </b-form>
 
@@ -126,7 +128,7 @@ export default {
     },
     onSubmit(event) {
         event.preventDefault()
-        alert(JSON.stringify(this.formulario))
+        
       },
       onReset(event) {
         event.preventDefault()
@@ -183,16 +185,29 @@ export default {
     text-align: center;
   }
 
-  #base-form button {
+  button {
     background-color: #00ACA6;
+    color: white;
+    width: 100%;
+    border-color: #00ACA6;
+    
+  }
+
+  #btn-reset {
+    background-color: black;
+  }
+
+  #btn-reset:hover {
+    background-color: red;
     color: white;
   }
 
-  #base-form button:hover {
+  button:hover {
     background-color: white;
     color: #00ACA6;
     cursor: pointer;
     border-color: #00ACA6;
+
   }
 
   #input-group-2, #input-group-3 {
