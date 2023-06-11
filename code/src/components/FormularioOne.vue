@@ -1,7 +1,10 @@
 <template>
     <div id='container-form' class='m-5 p-3'>
         <b-form @submit="onSubmit" @reset="onReset" v-if="show" id='base-form'>
-            <h4 class="m-5" >Insira o destino e o peso</h4>
+            <div style="display: flex;">
+                <b-img :src="require('../assets/map.png')" fluid alt="Logo" style='height: 5vh; margin-top: 30px; margin-left: 40px;'></b-img>
+                <h4 class="m-4" >Insira o destino e o peso</h4>
+            </div>
             <b-form-group id="input-group-3" label="Destino" label-for="input-3" class="mb-4">
             <b-form-select
                 id="input-3"

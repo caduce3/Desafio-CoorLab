@@ -2,8 +2,9 @@
   <div class="title">
     <div>
       <b-navbar toggleable="lg" type="dark" variant="info">
-        <b-navbar-brand class="ml-2">
-          <b>{{ appName }}</b>
+        <b-navbar-brand class="ml-2">        
+          <b-img :src="require('../assets/logo.png')" fluid alt="Logo" style='width: 50px; margin-right: 20px; margin-left: 20px;'></b-img>
+          <b>{{ appName }}</b> 
         </b-navbar-brand>
       </b-navbar>
     </div>
