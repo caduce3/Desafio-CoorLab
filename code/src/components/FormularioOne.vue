@@ -1,7 +1,7 @@
 <template>
     <div id='container-form' class='m-5 p-3'>
         <b-form @submit="onSubmit" @reset="onReset" v-if="show" id='base-form'>
-            <h4 class="m-5">Insira o destino e o peso</h4>
+            <h4 class="m-5" >Insira o destino e o peso</h4>
             <b-form-group id="input-group-3" label="Destino" label-for="input-3" class="mb-4">
             <b-form-select
                 id="input-3"
@@ -301,6 +301,7 @@ button:hover {
 h4 {
   font-weight: bold;
   text-align: center;
+  font-size: 2vw;
 }
 
 #div-visible {
