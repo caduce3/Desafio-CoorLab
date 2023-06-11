@@ -40,7 +40,7 @@
         <pre class="m-0">{{ formulario }}</pre>
       </b-card> -->
 
-      <div class='mt-5'>
+      <div class='mt-5' id='div-visible'>
         <div class="container-cards-resultado mb-3 mt-5">
           <div class='container-cards-resultado-1'>
             <p>
@@ -118,6 +118,8 @@ export default {
 
       this.appName = 'Melhor Frete';
 
+      
+
   },
   methods: {
     // Implemente aqui os metodos utilizados na pagina
@@ -189,6 +191,10 @@ export default {
           nomeTransportadoraFreteMaisRapido.innerHTML = this.melhorFrete.maisRapido.name;
           tempoEstimadoTransportadoraFreteMaisRapido.innerHTML = this.melhorFrete.maisRapido.lead_time;
           resultadoFreteMaisRapido.innerHTML = this.melhorFrete.maisRapido.valorFrete.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+          const containerCardsResultado = document.getElementById('div-visible');
+          containerCardsResultado.style.visibility = 'visible';
+          
   
     })
     .catch((error) => {
@@ -198,9 +204,16 @@ export default {
       },
       onReset(event) {
         event.preventDefault()
+        
         // Reset our formulario values
         this.formulario.peso = ''
         this.formulario.destino = null
+
+        //ANIMAÇÃO PARA OS CARDS DE RESULTADO
+        const containerCardsResultado = document.getElementById('div-visible');
+        containerCardsResultado.style.visibility = 'hidden';
+        
+
         // Trick to reset/clear native browser formulario validation state
         this.show = false
         this.$nextTick(() => {
@@ -288,12 +301,16 @@ export default {
 
    }
 
+  #div-visible {
+    visibility: hidden;
+  }
 
    .container-cards-resultado{
       display: flex;
       flex-direction: row; 
       font-size: 1.3vw;  
       text-align: left;
+      
    }
 
    .container-cards-resultado-1{
