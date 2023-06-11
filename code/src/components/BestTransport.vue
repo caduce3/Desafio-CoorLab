@@ -59,4 +59,13 @@ export default {
   margin-left: 20px;
 }
 
+@media (max-width: 940px) {
+  #container-form {
+    flex-direction: column;
+    height: 900px;
+    align-items: center;
+  }
+
+}
+
 </style>

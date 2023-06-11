@@ -91,5 +91,43 @@
   height: 20vh;
   background-color: white;
 }
+@media (max-width: 940px) {
 
+  #h3-nenhum-dado {
+    top: 800px;
+    left: 34%;
+  }
+  .container-cards-resultado-1{
+    width: 300px;
+    font-size: 16px;
+  }
+  .container-cards-resultado-2{
+    width: 100px;
+    font-size: 16px;
+  }
+  #msg-melhores-opcoes {
+    font-size: 20px;
+    margin: auto;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .container-cards-resultado-1{
+    width: 200px;
+    font-size: 12px;
+    margin: auto;
+  }
+  .container-cards-resultado-2{
+    width: 100px;
+    font-size: 16px;
+    margin: auto;
+  }
+  #msg-melhores-opcoes {
+    text-align: center;
+  }
+
+
+}
 </style>
