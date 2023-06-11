@@ -210,6 +210,9 @@ export default {
           //NEHUM DADO ENCONTRADO DESAPARECER APÓS PREENCHER O FORMULÁRIO
           const h3NenhumDado = document.getElementById('h3-nenhum-dado');
           h3NenhumDado.style.visibility = 'hidden';
+
+          const btnReset = document.getElementById('btn-reset');
+          btnReset.style.visibility = 'visible';
           
   
     })
@@ -255,7 +258,10 @@ export default {
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
- 
+
+#btn-reset{
+  visibility: hidden;
+}
  #h3-nenhum-dado{
     font-family: 'Oswald', sans-serif;
     color: white;
