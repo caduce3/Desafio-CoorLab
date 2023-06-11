@@ -39,7 +39,9 @@
       <!-- <b-card class="mt-3" header="Form Data Result">
         <pre class="m-0">{{ formulario }}</pre>
       </b-card> -->
-
+      <div id='h3-nenhum-dado'>
+        <h3 >Nenhum dado selecionado.</h3>
+      </div>
       <div class='mt-5' id='div-visible'>
         <div class="container-cards-resultado mb-3 mt-5">
           <div class='container-cards-resultado-1'>
@@ -173,27 +175,32 @@ export default {
             maisRapido: freteMaisRapido,
           };
 
-          console.log('Frete mais barato:', this.melhorFrete.maisBarato);
-          console.log('Frete mais rápido:', this.melhorFrete.maisRapido);
+          // console.log('Frete mais barato:', this.melhorFrete.maisBarato);
+          // console.log('Frete mais rápido:', this.melhorFrete.maisRapido);
 
+          //PEGANDO OS ELEMENTOS DO HTML PARA INSERIR OS DADOS
           const nomeTransportadoraFreteMenorValor = document.getElementById('nomeTransportadoraFreteMenorValor');
           const tempoEstimadoTransportadoraFreteMenorValor = document.getElementById('tempoEstimadoTransportadoraFreteMenorValor');
           const resultadoFreteMenorValor = document.getElementById('resultadoFreteMenorValor');
-
           const nomeTransportadoraFreteMaisRapido = document.getElementById('nomeTransportadoraFreteMaisRapido');
           const tempoEstimadoTransportadoraFreteMaisRapido = document.getElementById('tempoEstimadoTransportadoraFreteMaisRapido');
           const resultadoFreteMaisRapido = document.getElementById('resultadoFreteMaisRapido');
 
+          //INSERINDO OS DADOS NO HTML
           nomeTransportadoraFreteMenorValor.innerHTML = this.melhorFrete.maisBarato.name;
           tempoEstimadoTransportadoraFreteMenorValor.innerHTML = this.melhorFrete.maisBarato.lead_time;
           resultadoFreteMenorValor.innerHTML = this.melhorFrete.maisBarato.cost.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-
           nomeTransportadoraFreteMaisRapido.innerHTML = this.melhorFrete.maisRapido.name;
           tempoEstimadoTransportadoraFreteMaisRapido.innerHTML = this.melhorFrete.maisRapido.lead_time;
           resultadoFreteMaisRapido.innerHTML = this.melhorFrete.maisRapido.valorFrete.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
+          //CARD APARECER APÓS PREENCHER O FORMULÁRIO
           const containerCardsResultado = document.getElementById('div-visible');
           containerCardsResultado.style.visibility = 'visible';
+
+          //NEHUM DADO ENCONTRADO DESAPARECER APÓS PREENCHER O FORMULÁRIO
+          const h3NenhumDado = document.getElementById('h3-nenhum-dado');
+          h3NenhumDado.style.visibility = 'hidden';
           
   
     })
@@ -209,9 +216,13 @@ export default {
         this.formulario.peso = ''
         this.formulario.destino = null
 
-        //ANIMAÇÃO PARA OS CARDS DE RESULTADO
+        //CARD DESAPARECER APÓS RESETAR
         const containerCardsResultado = document.getElementById('div-visible');
         containerCardsResultado.style.visibility = 'hidden';
+
+        //NEHUM DADO ENCONTRADO APARECER APÓS RESETAR
+        const h3NenhumDado = document.getElementById('h3-nenhum-dado');
+        h3NenhumDado.style.visibility = 'visible';
         
 
         // Trick to reset/clear native browser formulario validation state
@@ -235,7 +246,16 @@ export default {
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
-  #container-form {
+ 
+ #h3-nenhum-dado{
+    font-family: 'Oswald', sans-serif;
+    color: white;
+    width: 300px;
+    position: absolute;
+    top: 50%;
+    left: 55%;
+ }
+ #container-form {
     border: 1px solid black;
     border-radius: 15px;
     font-family: 'Oswald', sans-serif;
