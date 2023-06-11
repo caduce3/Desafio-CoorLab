@@ -44,6 +44,7 @@
         <h3 >Nenhum dado selecionado.</h3>
       </div>
       <div class='mt-5' id='div-visible'>
+        <p id="msg-melhores-opcoes">Estas são as melhores alternativas de frete que encontramos para você.</p>
         <div class="container-cards-resultado mb-3 mt-5">
           <div class='container-cards-resultado-1'>
             <p>
@@ -262,6 +263,11 @@ export default {
 
 #btn-reset{
   visibility: hidden;
+}
+#msg-melhores-opcoes{
+  font-family: 'Oswald', sans-serif;
+  color: white;
+  font-size: 1.5vw;
 }
  #h3-nenhum-dado{
     font-family: 'Oswald', sans-serif;
