@@ -126,26 +126,30 @@ export default {
   methods: {
     // Implemente aqui os metodos utilizados na pagina
     methodFoo() {
-      console.log(this.appName)
+      // console.log(this.appName)
     },
     onSubmit(event) {
         event.preventDefault()
 
+        //PEGANDO OS VALORES DO FORMULARIO
         const destino = this.formulario.destino;
         const peso = this.formulario.peso;
-        console.log(destino, peso);
+        // console.log(destino, peso);
 
+        //PEGANDO OS DADOS DA API
         axios
           .get('http://localhost:3000/transport')
           .then((response) => {
           const transportadoras = response.data;
 
-          const freteMaisBarato = transportadoras
-            .filter((transportadora) => transportadora.city === destino)
-            .reduce((prev, curr) => {
-              const custo =
-                peso <= 100 ? curr.cost_transport_light : curr.cost_transport_heavy;
+          //FILTRANDO AS TRANSPORTADORAS PELO DESTINO INSERIDO NO FORMULÁRIO
+          const freteMaisBarato = transportadoras.filter((transportadora) => transportadora.city === destino).reduce((prev, curr) => {
+            
+              //SE O PESO FOR MENOR OU IGUAL A 100KG, O VALOR DO FRETE SERÁ O VALOR DO FRETE LIGHT (CUSTO POR KG * PESO)
+              //SE NÃO, O VALOR DO FRETE SERÁ O VALOR DO FRETE HEAVY (CUSTO POR KG * PESO)
+              const custo = peso <= 100 ? curr.cost_transport_light : curr.cost_transport_heavy;
 
+                //PASSANDO O VALOR PARA FLOAT E TIRANDO O R$
                 const valorFrete = parseFloat(custo.replace('R$', '')) * peso;
 
                 if (!prev || valorFrete < prev.cost) {
@@ -155,11 +159,12 @@ export default {
               return prev;
             }, null);
 
-          const freteMaisRapido = transportadoras
-            .filter((transportadora) => transportadora.city === destino)
-            .reduce((prev, curr) => {
+          const freteMaisRapido = transportadoras.filter((transportadora) => transportadora.city === destino).reduce((prev, curr) => {
+              //PEGANDO O TEMPO DE ENTREGA
               const tempo = parseInt(curr.lead_time);
 
+              //SE O PESO FOR MENOR OU IGUAL A 100KG, O VALOR DO FRETE SERÁ O VALOR DO FRETE LIGHT (CUSTO POR KG * PESO)
+              //SE NÃO, O VALOR DO FRETE SERÁ O VALOR DO FRETE HEAVY (CUSTO POR KG * PESO)
               if (!prev || tempo < prev.time) {
                 const custo = peso <= 100 ? curr.cost_transport_light : curr.cost_transport_heavy;
                 const valorFrete = parseFloat(custo.replace('R$', '')) * peso;
