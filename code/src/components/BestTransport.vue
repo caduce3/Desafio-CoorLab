@@ -26,6 +26,7 @@
             v-model="formulario.peso"
             placeholder="Peso da carga em Kg"
             required
+            type="number"
           ></b-form-input>
         </b-form-group>
 
