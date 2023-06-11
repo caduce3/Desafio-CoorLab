@@ -152,10 +152,12 @@ export default {
                 //PASSANDO O VALOR PARA FLOAT E TIRANDO O R$
                 const valorFrete = parseFloat(custo.replace('R$', '')) * peso;
 
+                //SE O VALOR DO FRETE FOR MENOR QUE O VALOR DO FRETE ANTERIOR, O VALOR DO FRETE ANTERIOR SERÁ SUBSTITUIDO PELO VALOR DO FRETE ATUAL
+                //SE NÃO, O VALOR DO FRETE ANTERIOR CONTINUARÁ SENDO O MESMO
                 if (!prev || valorFrete < prev.cost) {
+                  //RETORNA O VALOR DO FRETE
                   return { ...curr, cost: valorFrete };
                 }
-
               return prev;
             }, null);
 
@@ -168,6 +170,8 @@ export default {
               if (!prev || tempo < prev.time) {
                 const custo = peso <= 100 ? curr.cost_transport_light : curr.cost_transport_heavy;
                 const valorFrete = parseFloat(custo.replace('R$', '')) * peso;
+
+                //RETORNA O TEMPO DE ENTREGA E O VALOR DO FRETE
                 return { ...curr, time: tempo, valorFrete };
               }
 
