@@ -6,7 +6,8 @@
             <div class='mt-5' id='div-visible'>
                 <p id="msg-melhores-opcoes">Estas são as melhores alternativas de frete que encontramos para você.</p>
                 <div class="container-cards-resultado mb-3 mt-5">
-                    <div class='container-cards-resultado-1'>
+                    <div class='container-cards-resultado-1' style='display: flex;'>
+                        <b-img :src="require('../assets/hand.png')" fluid alt="Logo" style='height: 6.5vh; margin-top: 30px; margin-right: 30px;'></b-img>
                         <p>
                         <strong>Frete com o menor valor</strong> <br>
                         Transportadora: <span id='nomeTransportadoraFreteMenorValor'></span><br>
@@ -21,7 +22,8 @@
                 </div>
             </div>
             <div class="container-cards-resultado">
-                <div class='container-cards-resultado-1'>
+                <div class='container-cards-resultado-1' style='display: flex;'>
+                    <b-img :src="require('../assets/wall-clock.png')" fluid alt="Logo" style='height: 5vh; margin-top: 30px; margin-right: 30px;'></b-img>
                     <p>
                     <strong>Frete mais rápido</strong> <br>
                     Transportadora: <span id='nomeTransportadoraFreteMaisRapido'></span><br>
